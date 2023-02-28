@@ -20,9 +20,9 @@ namespace Entities.Concrete
         public int MinFindeksScore { get; set; }
         public string Plate { get; set; }
         public string Kilometer { get; set; }
-        public virtual Brand brand { get; set; }
-        public virtual Color color { get; set; }
-        public virtual CarImage carImage { get; set; }
+        public virtual Brand Brand { get; set; }
+        public virtual Color Color { get; set; }
+        public virtual CarImage CarImage { get; set; }
 
     }
 }

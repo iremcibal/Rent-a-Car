@@ -11,7 +11,6 @@ namespace Entities.Concrete
     {
         public int Id { get; set; }
         public int CustomerId { get; set; }
-        public string NationalIdentity { get; set; }
         public int Score { get; set; }
         public virtual Customer Customer { get; set; }
 
