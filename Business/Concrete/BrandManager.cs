@@ -1,8 +1,12 @@
-﻿using Business.Abstract;
+﻿using AutoMapper;
+using Business.Abstract;
+using Business.BusinessRules;
+using Business.Constants;
 using Business.Requests.Brands;
 using Business.Responses.Brands;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
+using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,35 +18,50 @@ namespace Business.Concrete
     public class BrandManager : IBrandService
     {
         IBrandDal _brandDal;
+        IMapper _mapper;
+        BrandBusinessRules _brandBusinessRules;
 
-        public BrandManager(IBrandDal brandDal)
+        public BrandManager(IBrandDal brandDal, IMapper mapper, BrandBusinessRules brandBusinessRules)
         {
             _brandDal = brandDal;
+            _mapper = mapper;
+            _brandBusinessRules = brandBusinessRules;
         }
 
         public IResult Add(CreateBrandRequest request)
         {
-            throw new NotImplementedException();
+            Brand brand = _mapper.Map<Brand>(request);
+            _brandBusinessRules.CheckIfBrandExist(brand);
+            _brandDal.Add(brand);
+            return new SuccessResult(Messages.AddData);
         }
 
         public IResult Delete(DeleteBrandRequest request)
         {
-            throw new NotImplementedException();
+            Brand brand = _mapper.Map<Brand>(request);
+            return new SuccessResult(Messages.DeleteData);
         }
 
         public IDataResult<GetBrandResponse> GetById(int id)
         {
-            throw new NotImplementedException();
+            Brand brand = _brandDal.Get(b=>b.Id == id);
+            var response = _mapper.Map<GetBrandResponse>(brand);
+            return new SuccessDataResult<GetBrandResponse>(response,Messages.GetData);
         }
 
         public IDataResult<List<ListBrandResponse>> GetList()
         {
-            throw new NotImplementedException();
+            List<Brand> brands = _brandDal.GetAll();
+            List<ListBrandResponse> responses = _mapper.Map<List<ListBrandResponse>>(brands); 
+            return new SuccessDataResult<List<ListBrandResponse>>(responses,Messages.ListData);
         }
 
         public IResult Update(UpdateBrandRequest request)
         {
-            throw new NotImplementedException();
+            Brand brand = _mapper.Map<Brand>(request);
+            _brandBusinessRules.CheckIfBrandNotExist(brand);
+            _brandDal.Update(brand);
+            return new SuccessResult(Messages.UpdateData);
         }
     }
 }

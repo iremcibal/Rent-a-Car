@@ -1,7 +1,12 @@
-﻿using Business.Abstract;
+﻿using AutoMapper;
+using Business.Abstract;
+using Business.BusinessRules;
+using Business.Constants;
 using Business.Requests.Rentals;
 using Business.Responses.Rentals;
 using Core.Utilities.Results;
+using DataAccess.Abstract;
+using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,29 +17,52 @@ namespace Business.Concrete
 {
     public class RentalManager : IRentalService
     {
+        IRentalDal _rentalDal;
+        IMapper _mapper;
+        RentalBusinessRules _rentalBusinessRules;
+
+        public RentalManager(IRentalDal rentalDal, IMapper mapper, RentalBusinessRules rentalBusinessRules)
+        {
+            _rentalDal = rentalDal;
+            _mapper = mapper;
+            _rentalBusinessRules = rentalBusinessRules;
+        }
+
         public IResult Add(CreateRentalRequest request)
         {
-            throw new NotImplementedException();
+            Rental rental = _mapper.Map<Rental>(request);
+            _rentalBusinessRules.CheckIfRentalExist(rental);
+            _rentalDal.Add(rental);
+            return new SuccessResult(Messages.AddData);
         }
 
         public IResult Delete(DeleteRentalRequest request)
         {
-            throw new NotImplementedException();
+            Rental rental = _mapper.Map<Rental>(request);
+            _rentalDal.Delete(rental);
+            return new SuccessResult(Messages.DeleteData);
         }
 
         public IDataResult<GetRentalResponse> GetById(int id)
         {
-            throw new NotImplementedException();
+            Rental rental = _rentalDal.Get(r=>r.Id== id);
+            var response = _mapper.Map<GetRentalResponse>(rental);
+            return new SuccessDataResult<GetRentalResponse>(response,Messages.GetData);
         }
 
         public IDataResult<List<ListRentalResponse>> GetList()
         {
-            throw new NotImplementedException();
+            List<Rental> rentals = _rentalDal.GetAll();
+            List<ListRentalResponse> responses = _mapper.Map<List<ListRentalResponse>>(rentals);
+            return new SuccessDataResult<List<ListRentalResponse>>(responses,Messages.ListData);
         }
 
         public IResult Update(UpdateRentalRequest request)
         {
-            throw new NotImplementedException();
+            Rental rental = _mapper.Map<Rental>(request);
+            _rentalBusinessRules.CheckIfRentalNotExist(rental);
+            _rentalDal.Update(rental);
+            return new SuccessResult(Messages.UpdateData);
         }
     }
 }

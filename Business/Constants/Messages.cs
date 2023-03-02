@@ -9,7 +9,12 @@ namespace Business.Constants
 {
     public class Messages
     {
-        public static string NotBeExist = "Mevcut değil";
-        public static string AlreadyExist = "Mevcut";
+        public static string NotBeExist = "Not Be Exist";
+        public static string AlreadyExist = "Already Exist";
+        public static string AddData = "Add Data";
+        public static string DeleteData = "Delete Data";
+        public static string UpdateData = "Update Data";
+        public static string ListData = "List Data";
+        public static string GetData = "Get Data";
     }
 }

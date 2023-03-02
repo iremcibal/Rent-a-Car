@@ -1,6 +1,7 @@
 ﻿using Business.Requests.Cars;
 using Business.Responses.Cars;
 using Core.Utilities.Results;
+using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,5 +17,7 @@ namespace Business.Abstract
         IResult Add(CreateCarRequest request);
         IResult Delete(DeleteCarRequest request);
         IResult Update(UpdateCarRequest request);
+        IDataResult<GetCarResponse> GetCarsByColorId(int colorId);
+        IDataResult<GetCarResponse> GetCarsByBrandId(int brandId);
     }
 }
