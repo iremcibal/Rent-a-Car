@@ -16,5 +16,9 @@ namespace Business.Constants
         public static string UpdateData = "Update Data";
         public static string ListData = "List Data";
         public static string GetData = "Get Data";
+        public static string MustContainAtMinTwoChar = "Must Contain At Minimum Two Char";
+        public static string PleaseEnterAValidNationalyIdNumber = "Please Enter A Valid Nationaly Id Number";
+        public static string MustContainAtMaxTenChar = "Must Contain At Maximum Ten Char";
+        public static string MustBeGreaterThanZero = "Must Be Greater Than Zero";
     }
 }

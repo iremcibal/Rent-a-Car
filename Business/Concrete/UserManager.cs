@@ -4,6 +4,8 @@ using Business.BusinessRules;
 using Business.Constants;
 using Business.Requests.Users;
 using Business.Responses.Users;
+using Business.ValidationRules;
+using Core.Aspects;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -28,6 +30,7 @@ namespace Business.Concrete
             _userBusinessRules = userBusinessRules;
         }
 
+        [ValidationAspect(typeof(UserRequestValidator))]
         public IResult Add(CreateUserRequest request)
         {
             User user = _mapper.Map<User>(request);

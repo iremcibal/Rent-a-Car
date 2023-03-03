@@ -14,21 +14,21 @@ namespace WebAPI.Controllers
         {
             _carService = carService;
         }
-        [HttpGet]
+        [HttpGet("GetAll")]
         public IActionResult GetList()
         {
             var result = _carService.GetList();
             return StatusCode(result.Success ? 200 : 400, result);
         }
 
-        [HttpGet]
+        [HttpGet("GetByBrandId")]
         public IActionResult GetByBrandId(int id) 
         {
             var result = _carService.GetCarsByBrandId(id);
             return StatusCode(result.Success ? 200 : 400,result);
         }
 
-        [HttpGet]
+        [HttpGet("GetByColorId")]
         public IActionResult GetByColorId(int id) 
         { 
             var result = _carService.GetCarsByColorId(id);
