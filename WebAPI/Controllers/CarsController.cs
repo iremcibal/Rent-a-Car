@@ -21,6 +21,19 @@ namespace WebAPI.Controllers
             return StatusCode(result.Success ? 200 : 400, result);
         }
 
+        [HttpGet]
+        public IActionResult GetByBrandId(int id) 
+        {
+            var result = _carService.GetCarsByBrandId(id);
+            return StatusCode(result.Success ? 200 : 400,result);
+        }
+
+        [HttpGet]
+        public IActionResult GetByColorId(int id) 
+        { 
+            var result = _carService.GetCarsByColorId(id);
+            return StatusCode(result.Success ? 200 : 400, result);
+        }
 
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
