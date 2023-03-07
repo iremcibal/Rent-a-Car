@@ -31,7 +31,7 @@ namespace Business.Concrete
         public IResult Add(CreateBrandRequest request)
         {
             Brand brand = _mapper.Map<Brand>(request);
-            _brandBusinessRules.CheckIfBrandExist(brand);
+            _brandBusinessRules.CheckIfBrandNotExist(brand);
             _brandDal.Add(brand);
             return new SuccessResult(Messages.AddData);
         }
@@ -39,6 +39,7 @@ namespace Business.Concrete
         public IResult Delete(DeleteBrandRequest request)
         {
             Brand brand = _mapper.Map<Brand>(request);
+            _brandDal.Delete(brand);
             return new SuccessResult(Messages.DeleteData);
         }
 

@@ -13,6 +13,6 @@ namespace Business.Requests.Users
         public string LastName { get; set; }
         public string NationalIdentity { get; set; }
         public string Email { get; set; }
-        public string PasswordSalt { get; set; }
+        public string Password { get; set; }
     }
 }

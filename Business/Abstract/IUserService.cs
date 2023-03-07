@@ -1,6 +1,8 @@
 ﻿using Business.Requests.Users;
 using Business.Responses.Users;
+using Core.Entities.Concrete;
 using Core.Utilities.Results;
+using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,5 +18,9 @@ namespace Business.Abstract
         IResult Add(CreateUserRequest request);
         IResult Delete(DeleteUserRequest request);
         IResult Update(UpdateUserRequest request);
+
+        List<OperationClaims> GetClaims(User user);
+        User GetUserByMail(string email);
+        GetUserResponse GetByMail(string email);
     }
 }

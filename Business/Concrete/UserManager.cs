@@ -6,6 +6,7 @@ using Business.Requests.Users;
 using Business.Responses.Users;
 using Business.ValidationRules;
 using Core.Aspects;
+using Core.Entities.Concrete;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -34,7 +35,7 @@ namespace Business.Concrete
         public IResult Add(CreateUserRequest request)
         {
             User user = _mapper.Map<User>(request);
-            _userBusinessRules.CheckIfUserExist(user);
+            _userBusinessRules.CheckIfUserNotExist(user);
             _userDal.Add(user);
             return new SuccessResult(Messages.AddData);
         }
@@ -51,6 +52,25 @@ namespace Business.Concrete
             User user = _userDal.Get(u=>u.Id== id);
             var response = _mapper.Map<GetUserResponse>(user);
             return new SuccessDataResult<GetUserResponse>(response,Messages.GetData);
+        }
+
+        public GetUserResponse GetByMail(string email)
+        {
+            User user = GetUserByMail(email);
+            GetUserResponse response = _mapper.Map<GetUserResponse>(user);
+            return response;
+        }
+
+        public User GetUserByMail(string email)
+        {
+            User? user = _userDal.Get(u => u.Email == email);
+            //_userBusinessRules.CheckIfUserExists(user);
+            return user;
+        }
+
+        public List<OperationClaims> GetClaims(User user)
+        {
+            return _userDal.GetClaims(user);
         }
 
         public IDataResult<List<ListUserResponse>> GetList()

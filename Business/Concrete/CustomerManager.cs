@@ -31,7 +31,7 @@ namespace Business.Concrete
         public IResult Add(CreateCustomerRequest request)
         {
             Customer customer = _mapper.Map<Customer>(request);
-            _customerBusinessRules.CheckIfCustomerExist(customer);
+            _customerBusinessRules.CheckIfCustomerNotExist(customer);
             _customerDal.Add(customer);
             return new SuccessResult(Messages.AddData);
         }

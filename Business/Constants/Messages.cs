@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entities.Concrete;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -20,5 +21,12 @@ namespace Business.Constants
         public static string PleaseEnterAValidNationalyIdNumber = "Please Enter A Valid Nationaly Id Number";
         public static string MustContainAtMaxTenChar = "Must Contain At Maximum Ten Char";
         public static string MustBeGreaterThanZero = "Must Be Greater Than Zero";
+        public static string CarAtCustomer = "Car At Customer";
+        internal static string UserRegistered;
+        internal static string UserNotFound;
+        internal static string PasswordError;
+        internal static string SuccessfulLogin;
+        internal static string UserAlreadyExists;
+        internal static string AccessTokenCreated;
     }
 }

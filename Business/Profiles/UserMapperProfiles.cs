@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Business.Requests.Auth;
 using Business.Requests.Rentals;
 using Business.Requests.Users;
 using Business.Responses.Rentals;
@@ -19,7 +20,7 @@ namespace Business.Profiles
             CreateMap<UpdateUserRequest, User>();
             CreateMap<DeleteUserRequest, User>();
             CreateMap<User, ListUserResponse>();
-            CreateMap<User, GetUserResponse>();
+            CreateMap<User, GetUserResponse>().ReverseMap();
         }
     }
 }

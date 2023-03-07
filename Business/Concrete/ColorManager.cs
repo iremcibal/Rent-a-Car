@@ -31,7 +31,7 @@ namespace Business.Concrete
         public IResult Add(CreateColorRequest request)
         {
             Color color = _mapper.Map<Color>(request);
-            _colorBusinessRules.CheckIfColorExist(color);
+            _colorBusinessRules.CheckIfColorNotExist(color);
             _colorDal.Add(color);
             return new SuccessResult(Messages.AddData);
         }

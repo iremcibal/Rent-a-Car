@@ -29,6 +29,13 @@ namespace DataAccess.Concrete.EntityFramework
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<OperationClaim>(o =>
+            {
+                o.ToTable("OperationClaims").HasKey("Id");
+                o.Property(o => o.Id).HasColumnName("Id");
+                o.Property(o=>o.Name).HasColumnName("Name");
+            });
+
             modelBuilder.Entity<Customer>(c =>
             {
                 c.ToTable("Customers").HasKey("Id");
@@ -70,11 +77,11 @@ namespace DataAccess.Concrete.EntityFramework
             {
                 f.ToTable("Rentals").HasKey("Id");
                 f.Property(f => f.Id).HasColumnName("Id");
-                f.Property(f => f.CustomerId).HasColumnName("CustomerId").IsRequired();
+                f.Property(f => f.CustomerId).HasColumnName("CustomerId");
                 f.Property(f => f.CarId).HasColumnName("CarId");
                 f.Property(f => f.StartDate).HasColumnName("StartDate");
-                f.Property(f => f.ReturnDate).HasColumnName("ReturnDate");
                 f.Property(f => f.EndDate).HasColumnName("EndDate");
+                f.Property(f => f.ReturnDate).HasColumnName("ReturnDate");
                 f.HasOne(f => f.Car);
                 f.HasOne(f => f.Customer);
             });

@@ -16,7 +16,6 @@ namespace Business.ValidationRules
             RuleFor(r => r.FirstName).MinimumLength(2).NotEmpty().WithMessage(Messages.MustContainAtMinTwoChar);
             RuleFor(r => r.LastName).MinimumLength(2).NotEmpty().WithMessage(Messages.MustContainAtMinTwoChar);
             RuleFor(r => r.Email).NotEmpty().EmailAddress();
-            RuleFor(r => r.PasswordSalt).MinimumLength(2).MaximumLength(10).NotEmpty().WithMessage(Messages.MustContainAtMinTwoChar).WithMessage(Messages.MustContainAtMaxTenChar);
             RuleFor(r => r.NationalIdentity).Length(11).NotEmpty().WithMessage(Messages.PleaseEnterAValidNationalyIdNumber);
 
         }

@@ -30,7 +30,7 @@ namespace Business.Concrete
         public IResult Add(CreateCarImageRequest request)
         {
             CarImage carImage = _mapper.Map<CarImage>(request);
-            _carImageBusinessRules.CheckIfCarImageExist(carImage);
+            _carImageBusinessRules.CheckIfCarImageNotExist(carImage);
             _carImageDal.Add(carImage);
             return new SuccessResult(Messages.AddData);
         }

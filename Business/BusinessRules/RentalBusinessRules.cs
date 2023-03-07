@@ -33,5 +33,11 @@ namespace Business.BusinessRules
             Rental rental = _rentalDal.Get(a => a.Id == rentalId);
             CheckIfRentalNotExist(rental);
         }
+
+        public void CheckIfCarExist(int carId)
+        {
+            Rental rental = _rentalDal.Get(r=>r.CarId == carId);
+            if (rental.ReturnDate==null) throw new Exception(Messages.CarAtCustomer);
+        }
     }
 }

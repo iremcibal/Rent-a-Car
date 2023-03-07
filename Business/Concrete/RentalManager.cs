@@ -31,7 +31,8 @@ namespace Business.Concrete
         public IResult Add(CreateRentalRequest request)
         {
             Rental rental = _mapper.Map<Rental>(request);
-            _rentalBusinessRules.CheckIfRentalExist(rental);
+            _rentalBusinessRules.CheckIfRentalNotExist(rental);
+            _rentalBusinessRules.CheckIfCarExist(rental.CarId);
             _rentalDal.Add(rental);
             return new SuccessResult(Messages.AddData);
         }

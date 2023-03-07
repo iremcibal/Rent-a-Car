@@ -31,7 +31,7 @@ namespace Business.Concrete
         public IResult Add(CreateFindeksRequest request)
         {
             Findeks findeks = _mapper.Map<Findeks>(request);
-            _findeksBusinessRules.CheckIfFindeksExist(findeks);
+            _findeksBusinessRules.CheckIfFindeksNotExist(findeks);
             _findeksDal.Add(findeks);
             return new SuccessResult(Messages.AddData);
         }

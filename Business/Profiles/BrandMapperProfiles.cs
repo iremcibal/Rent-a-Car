@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
+using Business.Requests.Auth;
 using Business.Requests.Brands;
+using Business.Requests.Users;
 using Business.Responses.Brands;
 using Entities.Concrete;
 using System;

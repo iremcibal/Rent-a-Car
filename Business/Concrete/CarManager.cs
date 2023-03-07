@@ -30,7 +30,7 @@ namespace Business.Concrete
         public IResult Add(CreateCarRequest request)
         {
             Car car = _mapper.Map<Car>(request);
-            _carBusinessRules.CheckIfCarExist(car);
+            _carBusinessRules.CheckIfCarNotExist(car);
             _carDal.Add(car);
             return new SuccessResult(Messages.AddData);
         }
