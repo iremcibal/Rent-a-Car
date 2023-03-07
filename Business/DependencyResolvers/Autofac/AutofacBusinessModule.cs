@@ -15,6 +15,7 @@ using Autofac.Extras.DynamicProxy;
 using Core.Utilities.Interceptors;
 using Castle.DynamicProxy;
 using Core.Utilities.Security.Jwt;
+using Core.Utilities.Helpers.FileHelper;
 
 namespace Business.DependencyResolvers.Autofac
 {
@@ -33,6 +34,7 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<EfRentalDal>().As<IRentalDal>().SingleInstance();
             
             builder.RegisterType<JwtHelper>().As<ITokenHelper>();
+            builder.RegisterType<FileHelperManager>().As<IFileHelper>().SingleInstance();
 
             builder.RegisterType<AuthManager>().As<IAuthService>().SingleInstance();
             builder.RegisterType<UserManager>().As<IUserService>().SingleInstance();

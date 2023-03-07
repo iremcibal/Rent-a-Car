@@ -9,5 +9,6 @@ namespace Business.Requests.CarImages
     public class DeleteCarImageRequest
     {
         public int Id { get; set; }
+        public string ImagePath { get; set; }
     }
 }

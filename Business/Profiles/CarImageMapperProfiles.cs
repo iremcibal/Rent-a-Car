@@ -14,8 +14,8 @@ namespace Business.Profiles
     {
         public CarImageMapperProfiles()
         {
-            CreateMap<CreateCarImageRequest, CarImage>();
-            CreateMap<UpdateCarImageRequest, CarImage>();
+            //CreateMap<CreateCarImageRequest, CarImage>();
+            //CreateMap<UpdateCarImageRequest, CarImage>();
             CreateMap<DeleteCarImageRequest, CarImage>();
             CreateMap<CarImage, ListCarImageResponse>();
             CreateMap<CarImage, GetCarImageResponse>();

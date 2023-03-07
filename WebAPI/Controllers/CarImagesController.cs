@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Business.Requests.CarImages;
+using Entities.Concrete;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,29 +19,29 @@ namespace WebAPI.Controllers
         [HttpGet]
         public IActionResult GetList()
         {
-            var result = _carImageService.GetList();
+            var result = _carImageService.GetAll();
             return StatusCode(result.Success ? 200 : 400, result);
         }
 
 
-        [HttpGet("{id}")]
-        public IActionResult GetById(int id)
+        [HttpGet("{getByImageId}")]
+        public IActionResult GetById(int imageId)
         {
-            var result = _carImageService.GetById(id);
+            var result = _carImageService.GetByImageId(imageId);
             return StatusCode(result.Success ? 200 : 400, result);
         }
 
-        [HttpPost]
-        public IActionResult Add(CreateCarImageRequest request)
+        [HttpPost("add")]
+        public IActionResult Add([FromForm] IFormFile file)
         {
-            var result = _carImageService.Add(request);
+            var result = _carImageService.Add(file);
             return StatusCode(result.Success ? 200 : 400, result);
         }
 
         [HttpPut]
-        public IActionResult Update(UpdateCarImageRequest request)
+        public IActionResult Update([FromForm] IFormFile file, [FromForm] CarImage image)
         {
-            var result = _carImageService.Update(request);
+            var result = _carImageService.Update(file, image);
             return StatusCode(result.Success ? 200 : 400, result);
         }
 
