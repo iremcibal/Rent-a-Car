@@ -4,6 +4,8 @@ using Business.BusinessRules;
 using Business.Constants;
 using Business.Requests.Cars;
 using Business.Responses.Cars;
+using Business.ValidationRules;
+using Core.Aspects;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -26,7 +28,7 @@ namespace Business.Concrete
             _mapper = mapper;
             _carBusinessRules = carBusinessRules;
         }
-
+        [ValidationAspect(typeof(CarRequestValidator))]
         public IResult Add(CreateCarRequest request)
         {
             Car car = _mapper.Map<Car>(request);

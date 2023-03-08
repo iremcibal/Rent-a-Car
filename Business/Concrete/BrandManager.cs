@@ -4,6 +4,8 @@ using Business.BusinessRules;
 using Business.Constants;
 using Business.Requests.Brands;
 using Business.Responses.Brands;
+using Business.ValidationRules;
+using Core.Aspects;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -27,7 +29,7 @@ namespace Business.Concrete
             _mapper = mapper;
             _brandBusinessRules = brandBusinessRules;
         }
-
+        [ValidationAspect(typeof(BrandRequestValidator))]
         public IResult Add(CreateBrandRequest request)
         {
             Brand brand = _mapper.Map<Brand>(request);
