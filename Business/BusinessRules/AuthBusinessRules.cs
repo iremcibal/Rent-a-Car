@@ -1,4 +1,5 @@
 ﻿using Business.Constants;
+using Core.Business.Exceptions;
 using Core.Utilities.Security.Hashing;
 using Entities.Concrete;
 using System;
@@ -14,7 +15,7 @@ namespace Business.BusinessRules
         public void CheckIfPasswordMatch(string password, byte[] passwordHash,byte[] passwordSalt)
         {
            bool isPasswordMatch = HashingHelper.VerifyPasswordHash(password, passwordHash, passwordSalt);
-            if (!isPasswordMatch) throw new System.Exception(Messages.PasswordError);
+            if (!isPasswordMatch) throw new BusinessException(Messages.PasswordError);
         }
     }
 }

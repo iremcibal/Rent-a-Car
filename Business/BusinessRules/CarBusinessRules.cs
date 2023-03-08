@@ -1,4 +1,5 @@
 ﻿using Business.Constants;
+using Core.Business.Exceptions;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
@@ -20,13 +21,13 @@ namespace Business.BusinessRules
 
         public void CheckIfCarNotExist(Car? car)
         {
-            if (car == null) throw new Exception(Messages.NotBeExist);
+            if (car == null) throw new BusinessException(Messages.NotBeExist);
 
         }
 
         public void CheckIfCarExist(Car? car)
         {
-            if (car != null) throw new Exception(Messages.AlreadyExist);
+            if (car != null) throw new BusinessException(Messages.AlreadyExist);
         }
 
         public void CheckIfCarNotExist(int carId)

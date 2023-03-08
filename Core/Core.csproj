@@ -7,6 +7,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Utilities\NewFolder1\**" />
+    <Compile Remove="Utilities\NewFolder2\**" />
+    <Compile Remove="Utilities\NewFolder\**" />
+    <EmbeddedResource Remove="Utilities\NewFolder1\**" />
+    <EmbeddedResource Remove="Utilities\NewFolder2\**" />
+    <EmbeddedResource Remove="Utilities\NewFolder\**" />
+    <None Remove="Utilities\NewFolder1\**" />
+    <None Remove="Utilities\NewFolder2\**" />
+    <None Remove="Utilities\NewFolder\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Autofac.Extras.DynamicProxy" Version="6.0.1" />
     <PackageReference Include="FluentValidation" Version="11.5.1" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.17" />
@@ -18,9 +30,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Utilities\NewFolder1\" />
-    <Folder Include="Utilities\NewFolder2\" />
-    <Folder Include="Utilities\NewFolder\" />
     <Folder Include="Utilities\Results\" />
   </ItemGroup>
 

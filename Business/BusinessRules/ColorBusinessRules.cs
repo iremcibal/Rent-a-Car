@@ -1,4 +1,5 @@
 ﻿using Business.Constants;
+using Core.Business.Exceptions;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
@@ -19,13 +20,13 @@ namespace Business.BusinessRules
 
         public void CheckIfColorNotExist(Color? color)
         {
-            if (color == null) throw new Exception(Messages.NotBeExist);
+            if (color == null) throw new BusinessException(Messages.NotBeExist);
 
         }
 
         public void CheckIfColorExist(Color? color)
         {
-            if (color != null) throw new Exception(Messages.AlreadyExist);
+            if (color != null) throw new BusinessException(Messages.AlreadyExist);
         }
 
         public void CheckIfColorNotExist(int colorId)

@@ -1,4 +1,5 @@
 ﻿using Business.Constants;
+using Core.Business.Exceptions;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
@@ -20,13 +21,13 @@ namespace Business.BusinessRules
 
         public void CheckIfCustomerNotExist(Customer? customer)
         {
-            if (customer == null) throw new Exception(Messages.NotBeExist);
+            if (customer == null) throw new BusinessException(Messages.NotBeExist);
 
         }
 
         public void CheckIfCustomerExist(Customer? customer)
         {
-            if (customer != null) throw new Exception(Messages.AlreadyExist);
+            if (customer != null) throw new BusinessException(Messages.AlreadyExist);
         }
 
         public void CheckIfCustomerNotExist(int customerId)

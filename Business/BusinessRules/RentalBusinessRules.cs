@@ -1,4 +1,5 @@
 ﻿using Business.Constants;
+using Core.Business.Exceptions;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
@@ -19,13 +20,13 @@ namespace Business.BusinessRules
 
         public void CheckIfRentalNotExist(Rental? rental)
         {
-            if (rental == null) throw new Exception(Messages.NotBeExist);
+            if (rental == null) throw new BusinessException(Messages.NotBeExist);
 
         }
 
         public void CheckIfRentalExist(Rental? rental)
         {
-            if (rental != null) throw new Exception(Messages.AlreadyExist);
+            if (rental != null) throw new BusinessException(Messages.AlreadyExist);
         }
 
         public void CheckIfRentalNotExist(int rentalId)
@@ -37,7 +38,7 @@ namespace Business.BusinessRules
         public void CheckIfCarExist(int carId)
         {
             Rental rental = _rentalDal.Get(r=>r.CarId == carId);
-            if (rental.ReturnDate==null) throw new Exception(Messages.CarAtCustomer);
+            if (rental.ReturnDate==null) throw new BusinessException(Messages.CarAtCustomer);
         }
     }
 }

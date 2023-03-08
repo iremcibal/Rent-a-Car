@@ -1,4 +1,5 @@
 ﻿using Business.Constants;
+using Core.Business.Exceptions;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
@@ -19,13 +20,13 @@ namespace Business.BusinessRules
 
         public void CheckIfFindeksNotExist(Findeks? findeks)
         {
-            if (findeks == null) throw new Exception(Messages.NotBeExist);
+            if (findeks == null) throw new BusinessException(Messages.NotBeExist);
 
         }
 
         public void CheckIfFindeksExist(Findeks? findeks)
         {
-            if (findeks != null) throw new Exception(Messages.AlreadyExist);
+            if (findeks != null) throw new BusinessException(Messages.AlreadyExist);
         }
 
         public void CheckIfFindeksNotExist(int findeksId)

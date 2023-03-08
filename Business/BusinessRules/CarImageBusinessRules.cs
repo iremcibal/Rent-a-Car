@@ -1,4 +1,5 @@
 ﻿using Business.Constants;
+using Core.Business.Exceptions;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -19,13 +20,13 @@ namespace Business.BusinessRules
         }
         public void CheckIfCarImageNotExist(CarImage? carImage)
         {
-            if (carImage == null) throw new Exception(Messages.NotBeExist);
+            if (carImage == null) throw new BusinessException(Messages.NotBeExist);
 
         }
 
         public void CheckIfCarImageExist(CarImage? carImage)
         {
-            if (carImage != null) throw new Exception(Messages.AlreadyExist);
+            if (carImage != null) throw new BusinessException(Messages.AlreadyExist);
         }
 
         public void CheckIfCarImageNotExist(int carImageId)
