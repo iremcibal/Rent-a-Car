@@ -15,10 +15,10 @@ namespace WebAPI.Controllers
         {
             _rentalService = rentalService;
         }
-        [HttpGet]
-        public IActionResult GetList()
+        [HttpGet("GetAll")]
+        public IActionResult GetAll()
         {
-            var result = _rentalService.GetList();
+            var result = _rentalService.GetAll();
             return StatusCode(result.Success ? 200 : 400, result);
         }
 

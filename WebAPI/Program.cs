@@ -5,6 +5,7 @@ using Business.DependencyResolvers;
 using Core.Extensions;
 using Core.DependencyResolvers;
 using Autofac.Extensions.DependencyInjection;
+using Core.CrossCuttingConcerns.Exceptions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -37,9 +38,10 @@ if (app.Environment.IsDevelopment())
 app.UseCors(builder => builder.WithOrigins("http://localhost:4200").AllowAnyOrigin());
 
 app.UseHttpsRedirection();
-
+app.UseStaticFiles();
 app.UseAuthorization();
 
 app.MapControllers();
+app.UseMiddleware<ExceptionMiddleware>();
 
 app.Run();

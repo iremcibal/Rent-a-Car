@@ -52,7 +52,7 @@ namespace Business.Concrete
             return new SuccessDataResult<GetRentalResponse>(response,Messages.GetData);
         }
 
-        public IDataResult<List<ListRentalResponse>> GetList()
+        public IDataResult<List<ListRentalResponse>> GetAll()
         {
             List<Rental> rentals = _rentalDal.GetAll();
             List<ListRentalResponse> responses = _mapper.Map<List<ListRentalResponse>>(rentals);

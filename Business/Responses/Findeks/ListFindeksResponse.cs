@@ -9,7 +9,9 @@ namespace Business.Responses.Findeks
     public class ListFindeksResponse
     {
         public int Id { get; set; }
-        public int CustomerId { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string CompanyName { get; set; }
         public int Score { get; set; }
     }
 }

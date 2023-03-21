@@ -12,7 +12,7 @@ namespace Business.Abstract
     public interface IRentalService
     {
         IDataResult<GetRentalResponse> GetById(int id);
-        IDataResult<List<ListRentalResponse>> GetList();
+        IDataResult<List<ListRentalResponse>> GetAll();
         IResult Add(CreateRentalRequest request);
         IResult Delete(DeleteRentalRequest request);
         IResult Update(UpdateRentalRequest request);

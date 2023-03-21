@@ -14,10 +14,10 @@ namespace WebAPI.Controllers
         {
             _customerService = customerService;
         }
-        [HttpGet]
-        public IActionResult GetList()
+        [HttpGet("GetAll")]
+        public IActionResult GetAll()
         {
-            var result = _customerService.GetList();
+            var result = _customerService.GetAll();
             return StatusCode(result.Success ? 200 : 400, result);
         }
 

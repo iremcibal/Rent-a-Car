@@ -16,8 +16,8 @@ namespace WebAPI.Controllers
             _carImageService = carImageService;
         }
 
-        [HttpGet]
-        public IActionResult GetList()
+        [HttpGet("GetAll")]
+        public IActionResult GetAll()
         {
             var result = _carImageService.GetAll();
             return StatusCode(result.Success ? 200 : 400, result);

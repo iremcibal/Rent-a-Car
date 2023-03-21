@@ -12,7 +12,7 @@ namespace Business.Abstract
     public interface IFindeksService
     {
         IDataResult<GetFindeksResponse> GetById(int id);
-        IDataResult<List<ListFindeksResponse>> GetList();
+        IDataResult<List<ListFindeksResponse>> GetAll();
         IResult Add(CreateFindeksRequest request);
         IResult Delete(DeleteFindeksRequest request);
         IResult Update(UpdateFindeksRequest request);

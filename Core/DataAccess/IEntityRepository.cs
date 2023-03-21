@@ -1,4 +1,6 @@
-﻿using Core.Entities;
+﻿using Core.DataAccess.Paging;
+using Core.Entities;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query;
 using System;
 using System.Collections.Generic;
@@ -11,10 +13,20 @@ namespace Core.DataAccess
 {
     public interface IEntityRepository<T> where T : class, IEntity, new()
     {
-        List<T> GetAll(Expression<Func<T, bool>> filter = null);
         void Add(T Entity);
         void Update(T Entity);
         void Delete(T Entity);
-        T Get(Expression<Func<T, bool>> filter);
+        T? Get(Expression<Func<T, bool>> predicate,
+               Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null,
+               bool enableTracking = true);
+        IPaginate<T> GetList(Expression<Func<T, bool>>? predicate = null,
+                             Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null,
+                             Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+                             int index = 0, int size = 10,
+                             bool enableTracking = true);
+
+        public List<T> GetAll(Expression<Func<T, bool>>? predicate = null,
+                              Func<IQueryable<T>,IIncludableQueryable<T, object>>? include = null, bool enableTracking = true);
+        
     }
 }

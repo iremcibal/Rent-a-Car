@@ -1,5 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Requests.Cars;
+using Business.Responses.Cars;
+using Core.Business.Requests;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,24 +16,30 @@ namespace WebAPI.Controllers
         {
             _carService = carService;
         }
-        [HttpGet("GetAll")]
-        public IActionResult GetList()
+        [HttpGet("GetList")]
+        public PaginateListCarResponse GetList([FromQuery] PageRequest request)
         {
-            var result = _carService.GetList();
+            return _carService.GetList(request);
+        }
+
+        [HttpGet("GetAll")]
+        public IActionResult GetAll()
+        {
+            var result = _carService.GetAll();
             return StatusCode(result.Success ? 200 : 400, result);
         }
 
         [HttpGet("GetByBrandId")]
-        public IActionResult GetByBrandId(int id) 
+        public IActionResult GetByBrandId(int brandId) 
         {
-            var result = _carService.GetCarsByBrandId(id);
+            var result = _carService.GetCarsByBrandId(brandId);
             return StatusCode(result.Success ? 200 : 400,result);
         }
 
         [HttpGet("GetByColorId")]
-        public IActionResult GetByColorId(int id) 
+        public IActionResult GetByColorId(int colorId) 
         { 
-            var result = _carService.GetCarsByColorId(id);
+            var result = _carService.GetCarsByColorId(colorId);
             return StatusCode(result.Success ? 200 : 400, result);
         }
 

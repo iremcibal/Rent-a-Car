@@ -4,6 +4,7 @@ using Business.BusinessRules;
 using Business.Constants;
 using Business.Requests.Brands;
 using Business.Responses.Brands;
+using Business.Responses.Cars;
 using Business.ValidationRules;
 using Core.Aspects;
 using Core.Utilities.Results;
@@ -52,7 +53,7 @@ namespace Business.Concrete
             return new SuccessDataResult<GetBrandResponse>(response,Messages.GetData);
         }
 
-        public IDataResult<List<ListBrandResponse>> GetList()
+        public IDataResult<List<ListBrandResponse>> GetAll()
         {
             List<Brand> brands = _brandDal.GetAll();
             List<ListBrandResponse> responses = _mapper.Map<List<ListBrandResponse>>(brands); 
@@ -66,5 +67,6 @@ namespace Business.Concrete
             _brandDal.Update(brand);
             return new SuccessResult(Messages.UpdateData);
         }
+
     }
 }

@@ -16,10 +16,10 @@ namespace WebAPI.Controllers
             _brandService = brandService;
         }
 
-        [HttpGet]
-        public IActionResult GetList()
+        [HttpGet("GetAll")]
+        public IActionResult GetAll()
         {
-            var result = _brandService.GetList();
+            var result = _brandService.GetAll();
             return StatusCode(result.Success ? 200 : 400, result);
         }
 

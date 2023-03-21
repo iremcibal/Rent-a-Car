@@ -50,11 +50,13 @@ namespace Business.Concrete
             return new SuccessDataResult<GetFindeksResponse>(response,Messages.GetData);
         }
 
-        public IDataResult<List<ListFindeksResponse>> GetList()
+        
+
+        public IDataResult<List<ListFindeksResponse>> GetAll()
         {
             List<Findeks> listFindeks = _findeksDal.GetAll();
             List<ListFindeksResponse> responses = _mapper.Map<List<ListFindeksResponse>>(listFindeks);
-            return new SuccessDataResult<List<ListFindeksResponse>>(responses,Messages.ListData);
+           return new SuccessDataResult<List<ListFindeksResponse>>(responses,Messages.ListData);
         }
 
         public IResult Update(UpdateFindeksRequest request)

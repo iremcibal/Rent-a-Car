@@ -9,8 +9,11 @@ namespace Business.Responses.Rentals
     public class ListRentalResponse
     {
         public int Id { get; set; }
-        public int CarId { get; set; }
-        public int CustomerId { get; set; }
+        public string CarName { get; set; }
+        public string Plate { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string CompanyName { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public DateTime ReturnDate { get; set; }

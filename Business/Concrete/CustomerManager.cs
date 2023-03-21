@@ -50,7 +50,8 @@ namespace Business.Concrete
             return new SuccessDataResult<GetCustomerResponse>(response,Messages.GetData);
         }
 
-        public IDataResult<List<ListCustomerResponse>> GetList()
+
+        public IDataResult<List<ListCustomerResponse>> GetAll()
         {
             List<Customer> customers = _customerDal.GetAll();
             List<ListCustomerResponse> responses = _mapper.Map<List<ListCustomerResponse>>(customers);

@@ -50,7 +50,7 @@ namespace Business.Concrete
             return new SuccessDataResult<GetColorResponse>(response,Messages.GetData);
         }
 
-        public IDataResult<List<ListColorResponse>> GetList()
+        public IDataResult<List<ListColorResponse>> GetAll()
         {
             List<Color> colors = _colorDal.GetAll();
             List<ListColorResponse> responses = _mapper.Map<List<ListColorResponse>>(colors);

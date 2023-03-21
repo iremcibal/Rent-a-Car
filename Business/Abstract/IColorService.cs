@@ -12,7 +12,7 @@ namespace Business.Abstract
     public interface IColorService
     {
         IDataResult<GetColorResponse> GetById(int id);
-        IDataResult<List<ListColorResponse>> GetList();
+        IDataResult<List<ListColorResponse>> GetAll();
         IResult Add(CreateColorRequest request);
         IResult Delete(DeleteColorRequest request);
         IResult Update(UpdateColorRequest request);

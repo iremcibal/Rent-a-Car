@@ -73,11 +73,11 @@ namespace Business.Concrete
             return _userDal.GetClaims(user);
         }
 
-        public IDataResult<List<ListUserResponse>> GetList()
+        public IDataResult<List<ListUserResponse>> GetAll()
         {
             List<User> users = _userDal.GetAll();
             List<ListUserResponse> responses = _mapper.Map<List<ListUserResponse>>(users);
-            return new SuccessDataResult<List<ListUserResponse>>(responses,Messages.ListData);
+           return new SuccessDataResult<List<ListUserResponse>>(responses,Messages.ListData);
         }
 
         public IResult Update(UpdateUserRequest request)
@@ -86,5 +86,6 @@ namespace Business.Concrete
             _userDal.Update(user);
             return new SuccessResult(Messages.UpdateData);
         }
+
     }
 }

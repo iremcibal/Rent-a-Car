@@ -1,5 +1,6 @@
 ﻿using Business.Requests.Cars;
 using Business.Responses.Cars;
+using Core.Business.Requests;
 using Core.Utilities.Results;
 using Entities.Concrete;
 using System;
@@ -13,11 +14,12 @@ namespace Business.Abstract
     public interface ICarService
     {
         IDataResult<GetCarResponse> GetById(int id);
-        IDataResult<List<ListCarResponse>> GetList();
+        PaginateListCarResponse GetList(PageRequest request);
+        IDataResult<List<ListCarResponse>> GetAll();
         IResult Add(CreateCarRequest request);
         IResult Delete(DeleteCarRequest request);
         IResult Update(UpdateCarRequest request);
-        IDataResult<GetCarResponse> GetCarsByColorId(int colorId);
-        IDataResult<GetCarResponse> GetCarsByBrandId(int brandId);
+        IDataResult<List<ListCarResponse>> GetCarsByColorId(int colorId);
+        IDataResult<List<ListCarResponse>> GetCarsByBrandId(int brandId);
     }
 }

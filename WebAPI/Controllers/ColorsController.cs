@@ -14,10 +14,10 @@ namespace WebAPI.Controllers
         {
             _colorService = colorService;
         }
-        [HttpGet]
-        public IActionResult GetList()
+        [HttpGet("GetAll")]
+        public IActionResult GetAll()
         {
-            var result = _colorService.GetList();
+            var result = _colorService.GetAll();
             return StatusCode(result.Success ? 200 : 400, result);
         }
 

@@ -15,10 +15,10 @@ namespace WebAPI.Controllers
         {
             _findeksService = findeksService;
         }
-        [HttpGet]
-        public IActionResult GetList()
+        [HttpGet("GetAll")]
+        public IActionResult GetAll()
         {
-            var result = _findeksService.GetList();
+            var result = _findeksService.GetAll();
             return StatusCode(result.Success ? 200 : 400, result);
         }
 
